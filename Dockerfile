@@ -1,5 +1,5 @@
 # Stage 1: Build the React app
-FROM node:16.17.0-alpine as build
+FROM node:20.19.0-alpine as build
 
 # Set the working directory
 WORKDIR /app
@@ -24,3 +24,4 @@ COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
