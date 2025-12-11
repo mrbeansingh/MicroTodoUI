@@ -1,0 +1,41 @@
+name: build & push to Acr
+on:
+  workflow_dispatch:
+permissions:
+  id-token: write
+  contents: read  
+jobs:
+  build-and-push:
+    runs-on: Ubuntu-latest
+    env:
+      IMAGE_NAME: todo-ui
+      IMAGE_TAG: v1
+      ACR_NAME: aksacr
+      ACR_LOGIN_SERVER: aksacr.azurecr.io
+      
+    steps:
+     - name: Checkout code
+       uses: actions/checkout@v3
+     - name: Azure Login
+       uses: Azure/login@v2.3.0
+       with:
+         client-id: a3c6ced6-a89f-4201-9eda-b613af4e617d
+         tenant-id: c28e5f26-06dc-439c-b874-557c13f4c5e6
+         subscription-id: eac08841-5119-4501-b5ac-82e7a5d29114
+     - name: Log in to ACR
+       run: |
+         az acr login --name $ACR_NAME
+     - name: Build Docker Image
+       run: |
+         docker build -t $IMAGE_NAME:$IMAGE_TAG .
+     - name: Tag Docker Image for ACR
+       run: |
+         docker tag $IMAGE_NAME:$IMAGE_TAG $ACR_LOGIN_SERVER/$IMAGE_NAME:$IMAGE_TAG
+     - name: push to ACR
+       run: |
+         docker push $ACR_LOGIN_SERVER/$IMAGE_NAME:$IMAGE_TAG
+       
+
+       
+    
+    
