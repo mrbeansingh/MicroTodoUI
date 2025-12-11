@@ -27,7 +27,7 @@ jobs:
          az acr login --name $ACR_NAME
      - name: Build Docker Image
        run: |
-         docker build -t $IMAGE_NAME:$IMAGE_TAG .
+         docker build -t $IMAGE_NAME:$IMAGE_TAG ./MicroTodoUI
      - name: Tag Docker Image for ACR
        run: |
          docker tag $IMAGE_NAME:$IMAGE_TAG $ACR_LOGIN_SERVER/$IMAGE_NAME:$IMAGE_TAG
