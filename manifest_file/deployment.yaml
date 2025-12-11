@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-app-deployment
+spec: 
+  replicas: 4
+  selector:
+    matchLabels:
+      type: ui-pod
+  template:
+    labels:
+      type: ui-pod
+    spec:
+      containers:
+       - name: con1
+         image: aksacr.azurecr.io/todo-ui:v1
+         ports:
+          - containerPort: 80
+
+        
+
+        
+
+  
