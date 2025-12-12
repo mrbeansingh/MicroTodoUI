@@ -8,8 +8,9 @@ spec:
     matchLabels:
       type: ui-pod
   template:
-    labels:
-      type: ui-pod
+    metadata:
+      labels:
+        type: ui-pod
     spec:
       containers:
        - name: con1
