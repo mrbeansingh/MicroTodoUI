@@ -8,7 +8,7 @@ jobs:
   build-and-push:
     runs-on: Ubuntu-latest
     env:
-      IMAGE_NAME: todo-ui
+      IMAGE_NAME: todo-ui-micro
       IMAGE_TAG: v1
       ACR_NAME: aksacr
       ACR_LOGIN_SERVER: aksacr.azurecr.io
