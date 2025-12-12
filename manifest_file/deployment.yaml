@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-app-deployment
+  name: frontend-app-deployment1
 spec: 
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
       type: ui-pod
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
        - name: con1
-         image: aksacr.azurecr.io/todo-ui:v1
+         image: aksacr.azurecr.io/todo-ui-micro:v1
          ports:
           - containerPort: 80
 
