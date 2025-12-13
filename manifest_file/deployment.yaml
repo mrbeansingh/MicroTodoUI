@@ -17,6 +17,7 @@ spec:
          image: aksacr.azurecr.io/todo-ui-micro:v1
          ports:
           - containerPort: 80
+         
 
         
 
